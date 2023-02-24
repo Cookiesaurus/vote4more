@@ -5,8 +5,15 @@
             "What is Your Favorite Food",
             "Select",
             [
-                "Apples",
-                "Oranges"
+                [
+                    "Apples",
+                    "Apple.png"
+                ],
+                [
+                    "Oranges",
+                    ""
+                ] 
+                
             ],
             "Y",
             [
