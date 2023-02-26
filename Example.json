@@ -1,5 +1,5 @@
 {
-    "title":"example",
+    "title": "example",
     "Questions":[
         [
             "What is Your Favorite Food",
@@ -21,5 +21,29 @@
             ],
             "1"
         ]
+    ],
+    "Questions": [
+        {
+            "title": "...",
+            "type": "radio", // Valid values include "radio" or "multi"
+            "selection": [ 0 ] // An array of answers selected, for "radio", only 1 selection will ever be made
+            "options": [
+                "Option 1",
+                "Option 2",
+                "Option 3"
+            ],
+            "writeIn": "..." // Value may be omitted from presentation if write-ins are disabled for this ballot
+        },
+        {
+            "title": "...",
+            "type": "multi", // Multi means the *selection* array can contain more than 1 element
+            "selection": [ 0, 2 ],
+            "options": [
+                "Option 1",
+                "Option 2",
+                "Option 3"
+            ],
+            "writeIn": "..."
+        }
     ]
 }
