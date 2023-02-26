@@ -1,27 +1,4 @@
 {
-    "title": "example",
-    "Questions":[
-        [
-            "What is Your Favorite Food",
-            "Select",
-            [
-                [
-                    "Apples",
-                    "Apple.png"
-                ],
-                [
-                    "Oranges",
-                    ""
-                ] 
-                
-            ],
-            "Y",
-            [
-                "0"
-            ],
-            "1"
-        ]
-    ],
     "Questions": [
         {
             "title": "...",
