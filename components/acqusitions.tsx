@@ -6,6 +6,7 @@ import MyTable from "./my-table";
 
 export type AugmentedAcquisition = {
   id: number;
+  status: boolean;
   student: {
     id: number,
     email: string;
@@ -33,14 +34,14 @@ export default function Acquisitions(
     return <p>Loading...</p>
 
   return (
-    <Container>
-      <h6>{title}</h6>
+    <>
+      <h5>{title}</h5>
       <MyTable
         handleSelection={null}
         col={acquisitions}
         headerAdapter={headerAdapter}
         rowAdapter={rowAdapter}
       />
-    </Container>
+    </>
   )
 }

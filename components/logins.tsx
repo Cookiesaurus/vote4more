@@ -4,6 +4,7 @@ import { LoginAttempt } from "@prisma/client";
 
 export type LoginWithStudentEmail = {
   id: number;
+  status: boolean;
   student: {
     email: string;
   };
@@ -31,15 +32,15 @@ export default function Logins(
   // console.log(logins.length)
 
   return (
-    <Container>
-      <h6>{title}</h6>
+    <>
+      <h5>{title}</h5>
       <MyTable
         handleSelection={handleSelection}
         col={logins}
         headerAdapter={headerAdapter}
         rowAdapter={rowAdapter}
       />
-    </Container>
+    </>
   )
 }
 

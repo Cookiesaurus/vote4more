@@ -5,7 +5,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'GET') {
     let success = false
     let logins
-    console.log(req.query.success)
+
     if (req.query.success) { // if defined in url params
       if (req.query.success === 'true') // set if true
         success = true
@@ -16,6 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           },
           select: {
             id: true,
+            status: true,
             login_timestamp: true,
             student: {
               select: {
@@ -29,6 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       logins = await prisma.loginAttempt.findMany({
         select: {
           id: true,
+          status: true,
           login_timestamp: true,
           student: {
             select: {
@@ -56,6 +58,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       },
       select: {
         id: true,
+        status: true,
         login_timestamp: true,
         student: {
           select: {
