@@ -1,3 +1,12 @@
+## Tasks
+
+- Database Creation in Prisma
+- User Interface
+  - All the Pages
+  - All the Components
+- RestAPI
+  - CRUD
+
 ## Tech Stack
 
 - Node.js
