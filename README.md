@@ -6,6 +6,9 @@
   - Reusable Components
 - Workflows
   - Ballot Manager
+     - Voters: View & Vote
+     - Employees: CRUD & Vote
+     - Admins: CRUD & Vote
   - Voting Group Manager
   - Admin Dashboard (User Manager)
 - RestAPI
