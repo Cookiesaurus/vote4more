@@ -29,9 +29,9 @@ Once that is installed, we need to setup Prisma. In the project root dir, run th
 To check the validity of the last commands, open a MySQL CommandLine.
 
 - SHOW DATABASE;
-- USE RAWRS:
+- USE vote4more:
 - SHOW TABLES;
-- SELECT * FROM rawrs;
+- SELECT * FROM vote4more;
 
 Last command to start the server locally:
 
