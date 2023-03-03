@@ -1,16 +1,9 @@
-# RAWRS
+## Tech Stack
 
-## Login Example Users
-
-```
-Professor:
-  Username: Long Henry
-  Password: 123
-
-Admin:
-  Username: Phil Mahoochie
-  Password: 123
-```
+- Node.js
+- React/Next.js
+- NextUI
+- Prisma *(ORM)*
 
 ## Dependency Setup
 
@@ -26,15 +19,6 @@ Our project requires the installation of:
   - Configure your server to run on port 3306 *(default)* and use the default `username: root` and `password: password` (This could all be omitted with MySQL being containerized in docker if it was setup)
 
 - Install [git](https://git-scm.com/downloads) if you don't have it already. If you have Github Desktop then you should already have it. You can test this by opening a terminal and running `git --version`.
-
-## Project Setup
-
-In a terminal in the prefered directory for your project, run `git clone https://github.com/Chase-William/RIT-CapSTONERS`. This will create a folder and inside will be a copy of the project. Change directory into the project's root directory and then run `npm install` *(this may require a terminal with elevated privilage)*. This will download all the packages require for the project to function.
-
-That is:
-- `git clone https://github.com/Chase-William/RIT-CapSTONERS`
-- `cd RIT-CapSTONERS`
-- `npm install`
 
 Once that is installed, we need to setup Prisma. In the project root dir, run the following:
 
@@ -79,35 +63,3 @@ After modifying the Prisma schema, run `npx prisma generate` to keep the generat
 #### Seeding The Database
 
 Seeding a database will insert default data into the database. Our default data is housed within `prisma/seed.ts` and can be used by running `npx prisma db seed`. If you run this and get a *Unique constraint failed on the constraint*, the database already contains seeded records.
-
-## Docker Steps *(what I had started.. kinda deprecated)*
-
-Create a volume which can be loaded into a container.
-
-[source](https://towardsdatascience.com/connect-to-mysql-running-in-docker-container-from-a-local-machine-6d996c574e55)
-
-```bash
-docker volume create rawrs-volume
-```
-
-```sql
-docker run --name=rawrs-mysql -p3306:3306 -v mysql-volume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=rawrs123 -d mysql/mysql-server:latest
-```
-
-```
-mysql -u root -p
-```
-
-Provide password: `rawrs123`
-
-Allow connections outside of docker container local machine itself.
-
-```
-update mysql.user set host = '%' where user='root';
-```
-
-Setup database.
-
-```
-source /app/src/setup.sql
-```
