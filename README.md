@@ -3,6 +3,7 @@
 - Node.js
 - React/Next.js
 - NextUI
+- MySQL
 - Prisma *(ORM)*
 
 ## Dependency Setup
