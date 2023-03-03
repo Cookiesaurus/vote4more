@@ -5,12 +5,12 @@
             "type": "radio", // Valid values include "radio" or "multi"
             "selection": [ 0 ] // An array of answers selected, for "radio", only 1 selection will ever be made
             "options": [
-                "Option 1":[
-                    "OptionImg",
-                    "OptionName",
-                    "OptionDesc",
-                    "OptionNum"
-                ],
+                "Option 1": {
+                    "OptionImg": "...",
+                    "OptionName": "...",
+                    "OptionDesc": "...",
+                    "OptionNum": "..."
+                },
                 "Option 2":[
                     "OptionImg",
                     "OptionName",
