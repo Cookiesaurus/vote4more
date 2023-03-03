@@ -6,12 +6,14 @@
   - Reusable Components
 - Workflows
   - Ballot Manager
-  - Group Manager
-  - Admin Dashboard
+  - Voting Group Manager
+  - Admin Dashboard (User Manager)
 - RestAPI
   - CRUD
-- Reporting
+  - Login & Signup
 - Logging
+  - Reporting
+
 
 ## Tech Stack
 
