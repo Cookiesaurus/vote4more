@@ -4,7 +4,7 @@
 - User Interface
   - Individual Pages
   - Reusable Components
- - Workflows
+- Workflows
   - Ballot Manager
   - Group Manager
   - Admin Dashboard
