@@ -2,9 +2,12 @@
 
 - Database Creation in Prisma
 - User Interface
-  - All the Pages
-  - All the Components
-  - Logic for Ballots
+  - Individual Pages
+  - Reusable Components
+ - Workflows
+  - Ballot Manager
+  - Group Manager
+  - Admin Dashboard
 - RestAPI
   - CRUD
 - Reporting
