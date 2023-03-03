@@ -4,8 +4,11 @@
 - User Interface
   - All the Pages
   - All the Components
+  - Logic for Ballots
 - RestAPI
   - CRUD
+- Reporting
+- Logging
 
 ## Tech Stack
 
