@@ -20,7 +20,7 @@
                 "Option 3":[
                     "OptionImg",
                     "OptionName",
-                    "OptionDesc,
+                    "OptionDesc",
                     "OptionNum"
                 ]
             ],
@@ -34,19 +34,19 @@
                 "Option 1":[
                     "OptionImg",
                     "OptionName",
-                    "OptionDesc,
+                    "OptionDesc",
                     "OptionNum"
                 ],
                 "Option 2":[
                     "OptionImg",
                     "OptionName",
-                    "OptionDesc,
+                    "OptionDesc",
                     "OptionNum"
                 ],
                 "Option 3":[
                     "OptionImg",
                     "OptionName",
-                    "OptionDesc,
+                    "OptionDesc",
                     "OptionNum"
                 ]
             ],
