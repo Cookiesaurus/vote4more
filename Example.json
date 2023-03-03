@@ -5,24 +5,21 @@
             "type": "radio", // Valid values include "radio" or "multi"
             "selection": [ 0 ] // An array of answers selected, for "radio", only 1 selection will ever be made
             "options": [
-                "Option 1": {
+                {
                     "OptionImg": "...",
                     "OptionName": "...",
                     "OptionDesc": "...",
-                    "OptionNum": "..."
                 },
-                "Option 2":[
-                    "OptionImg",
-                    "OptionName",
-                    "OptionDesc",
-                    "OptionNum"
-                ],
-                "Option 3":[
-                    "OptionImg",
-                    "OptionName",
-                    "OptionDesc",
-                    "OptionNum"
-                ]
+                {
+                    "OptionImg": "...",
+                    "OptionName": "...",
+                    "OptionDesc": "...",
+                },
+                {
+                    "OptionImg": "...",
+                    "OptionName": "...",
+                    "OptionDesc": "...",
+                }
             ],
             "writeIn": "..." // Value may be omitted from presentation if write-ins are disabled for this ballot
         },
@@ -31,24 +28,21 @@
             "type": "multi", // Multi means the *selection* array can contain more than 1 element
             "selection": [ 0, 2 ],
             "options": [
-                "Option 1":[
-                    "OptionImg",
-                    "OptionName",
-                    "OptionDesc",
-                    "OptionNum"
-                ],
-                "Option 2":[
-                    "OptionImg",
-                    "OptionName",
-                    "OptionDesc",
-                    "OptionNum"
-                ],
-                "Option 3":[
-                    "OptionImg",
-                    "OptionName",
-                    "OptionDesc",
-                    "OptionNum"
-                ]
+                {
+                    "OptionImg": "...",
+                    "OptionName": "...",
+                    "OptionDesc": "...",
+                },
+                {
+                    "OptionImg": "...",
+                    "OptionName": "...",
+                    "OptionDesc": "...",
+                },
+                {
+                    "OptionImg": "...",
+                    "OptionName": "...",
+                    "OptionDesc": "...",
+                }
             ],
             "writeIn": "..."
         }
