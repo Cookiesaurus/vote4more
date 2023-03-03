@@ -3,6 +3,21 @@
 - Database Creation in Prisma
 - User Interface
   - Individual Pages
+     - Login/Signup page
+     - Ballot Manager page
+        - Mini-search interface
+        - Voting interface
+        - Report interface
+     - Group Manager page
+     - Search page
+        - User search
+           - Search by Voters, Employees, or Admins (invisible to Voters)
+           - Sort by privilege, name (alphabetical)
+        - Group search
+           - Sort by size, name (alphabetical)
+        - Ballot search (Employee and Admin ONLY)
+           - Sort by status, name (alphabetical)
+     - User Manager page (Admin Dashboard)
   - Reusable Components
 - Workflows
   - Ballot Manager
@@ -10,7 +25,13 @@
      - Employees: CRUD & Vote
      - Admins: CRUD & Vote
   - Voting Group Manager
-  - Admin Dashboard (User Manager)
+     - Voters: Cannot access
+     - Employees: CRUD Voting Groups
+     - Admins: CRUD Voting Groups
+  - User Manager (Admin Dashboard)
+     - Voters: Cannot access
+     - Employees: Cannot access
+     - Admin: CRUD Users
 - RestAPI
   - CRUD
   - Login & Signup
