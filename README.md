@@ -1,3 +1,10 @@
+## Structure
+
+- `/bl` *(Business Layer)*
+- `/dl` *(Data Layer)*
+- `/pages/api/` *(Service Layer)*
+- `/pages`, `/public`, `/styles`, `/components` *(Application Layer)*
+
 ## Tasks
 
 - Database Creation in Prisma
