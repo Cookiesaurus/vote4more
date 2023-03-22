@@ -1,9 +1,14 @@
 // import { withIronSessionApiRoute } from 'iron-session/next'
 import { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../../../lib/prisma'
-import { User } from '../user'
 import { sign } from '../../../lib/jwt';
 const bcrypt = require('bcrypt');
+
+export type User = {
+  role: number
+  isLoggedIn: boolean,
+  apiKey: string
+}
 
 /**
  * Login the user and create a session, also query the database for more information about
@@ -17,11 +22,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const { username, password } = await req.body
 
+  if (!username || !password)
+    return res.status(400).end('Missing username and/or password fields.')
   // console.log(`Username ${username}`)
   // console.log(`Password ${password}`)
 
   try {
     const userModel = await prisma.user.findUnique({ where: { username } })
+
+    if (!userModel)
+      return res.status(404).end('Unable to find the given user.')
 
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
@@ -34,7 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.json({
       user: {
        username: userModel.username,
-       role: userModel.role,
+       role: userModel.derivedType,
        isLoggedIn: true,
        apiKey: apiKey
       }      

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { User } from "../pages/api/user"
 import Cookies from 'js-cookie'
 import { USER_COOKIE_NAME } from "./util"
+import { User } from "../pages/api/auth/login"
 
 /**
  * Fetch user info stored in cookies if exist.

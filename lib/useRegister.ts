@@ -1,21 +1,28 @@
 import Cookies from 'js-cookie'
+import { User } from '../pages/api/auth/login'
 import { post } from './fetch-wrapper'
-import { User } from '../pages/api/user'
 
 async function registerRequest(
   username: string, 
+  firstName: string,
+  lastName: string,
   password: string,
-  email: string,
-  role: string
+  email: string
   ): Promise<User> {
   return await post('api/auth/register', 
   {
     username: username,
+    firstName: firstName,
+    lastName: lastName,
     password: password,
-    email: email,
-    role: role
+    email: email
   })
-    .then(data => data.user)
+  .catch(ex => {
+    if (ex.response) {
+      console.log(ex.response.data)
+    }
+  })
+  .then(data => data?.user)
 }
 
 // Tried using a type then macro to remove duplicate type definitions, but wasn't worth the complexity and time investment
@@ -27,11 +34,16 @@ async function registerRequest(
  */
 export const useRegister = (): {
   register: {
-    (username: string, password: string, email: string, role: string): Promise<User | undefined>
+    (username: string, firstName: string, lastName: string, password: string, email: string): Promise<User | undefined>
   }
 } => {
-  const register = async (username: string, password: string, email: string, role: string): Promise<User | undefined> => {
-    const user = await registerRequest(username, password, email, role)
+  const register = async (username: string, firstName: string, lastName: string, password: string, email: string): Promise<User | undefined> => {
+    const user = await registerRequest(
+      username, 
+      firstName,
+      lastName,
+      password, 
+      email)
     if (user)
       Cookies.set('user', JSON.stringify(user))
     return user

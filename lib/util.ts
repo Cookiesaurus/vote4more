@@ -6,7 +6,8 @@ import { NextRequest, NextResponse } from "next/server";
 import Router from "next/router";
 import { USER_ID_HEADER_NAME } from "../middleware";
 import { NextApiRequest } from "next";
-import { User } from "../pages/api/user";
+import { EMPLOYEE_TYPE_ID, VOTER_TYPE_ID } from "../prisma/types";
+import { User } from "../pages/api/auth/login";
 
 // Dates to an object that doesn't
 export function makeSerializable<T extends any> (o: T): T {
@@ -35,14 +36,14 @@ export function parseCookie(str): Cookie {
 export function onLoggedIn(user: User) {
   if (!user.isLoggedIn)
     Error('User is not logged in!')
-  if (user.role === PROF_ROLE)
-    Router.push('/courses')
-  else if (user.role === ADMIN_ROLE)
-    Router.push('/accounts')
+  if (user.role === EMPLOYEE_TYPE_ID)
+    Router.push('/employee/dashboard')
+  else if (user.role === VOTER_TYPE_ID)
+    Router.push('/voter/dashboard')
 }
 
-export const getToken = () => localStorage.getItem('rawrs-token')
-export const setToken = (value: string) => localStorage.setItem('rawrs-token', value)
+export const getToken = () => localStorage.getItem('vote4more-token')
+export const setToken = (value: string) => localStorage.setItem('vote4more-token', value)
 
 /**
  * Utility function to get the user id from the request header.
@@ -57,7 +58,4 @@ export function getUserIdFromRequest(req: NextApiRequest): number {
   throw Error(`Request to ${req.url} does not have the key ${USER_ID_HEADER_NAME} present in header.`)
 }
 
-export const PROF_ROLE = 'professor'
-export const ADMIN_ROLE = 'admin'
-export const STUDENT_ROLE = 'student'
 export const USER_COOKIE_NAME = 'user'

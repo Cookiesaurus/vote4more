@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
+import { User } from '../pages/api/auth/login'
 import { post } from './fetch-wrapper'
-import { User } from '../pages/api/user'
 import { USER_COOKIE_NAME } from './util'
 
 async function loginRequest(username: string, password: string): Promise<User> {
@@ -8,7 +8,12 @@ async function loginRequest(username: string, password: string): Promise<User> {
     username: username,
     password: password
   })
-  .then(data => data.user)
+  .catch(ex => {
+    if (ex.response) {
+      console.log(ex.response.data)
+    }
+  })
+  .then(data => data?.user)
 }
 
 /**

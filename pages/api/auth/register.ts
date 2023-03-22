@@ -1,11 +1,20 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
-import { User } from "../user";
+import { User } from "./login";
 import { sign } from "../../../lib/jwt";
+import { VOTER_TYPE_ID } from "../../../prisma/types";
 const bcrypt = require('bcrypt');
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
-  const { username, password, email, role } = await req.body
+  const { username, firstName, lastName, password, email } = await req.body
+
+  if (!username ||
+      !firstName ||
+      !lastName ||
+      !password ||
+      !email) {
+    return res.status(400).end('Missing required fields for voter registration.')
+  }
 
   try {
     const salt = bcrypt.genSaltSync(10);
@@ -14,9 +23,11 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     const userModel = await prisma.user.create({
       data: {
         username: username,
+        firstName: firstName,
+        lastName: lastName,
         password: hash,
         email: email,
-        role: role
+        derivedType: VOTER_TYPE_ID
       }
     })
 
@@ -29,7 +40,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     return res.json({
       user: {
        username: userModel.username,
-       role: userModel.role,
+       role: userModel.derivedType,
        isLoggedIn: true,
        apiKey: apiKey
       } as User      

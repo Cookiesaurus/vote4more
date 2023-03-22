@@ -6,62 +6,58 @@ import { useRegister } from "../../lib/useRegister";
 
 export default function Register() {
   const { register } = useRegister()
-  const [selected, setSelected] = useState(new Set(["professor"]));
   const [username, setUsername] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
-
-  const getRole = React.useMemo(
-    () => Array.from(selected).join(", ").replaceAll("_", " "),
-    [selected]
-  );
 
   /**
    * Use this handler to pass in the extra role argument
    */
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const user = await register(username, password, email, getRole)    
-    onLoggedIn(user)
+    const user = await register(
+      username, 
+      firstName,
+      lastName,
+      password, 
+      email)
+    if (!user) {
+      console.log('Unable to login due to failed registration.')
+    } else {
+      onLoggedIn(user)
+    }    
   }
 
   return (
     <form onSubmit={submitHandler}>
       <div className={utilStyles.vertical}>
-        <Text          
+        <Text
           size={60}
         >
           Register
         </Text>
-        <Input 
-          placeholder="Username" 
-          onChange={e => setUsername(e.target.value)} 
+        <Input
+          placeholder="Username"
+          onChange={e => setUsername(e.target.value)}
+        />
+        <Input
+          placeholder="Firstname"
+          onChange={e => setFirstName(e.target.value)}
+        />
+        <Input
+          placeholder="Lastname"
+          onChange={e => setLastName(e.target.value)}
         />
         <Input.Password
-          placeholder="Password" 
+          placeholder="Password"
           onChange={e => setPassword(e.target.value)}
         />
-        <Input 
+        <Input
           placeholder="Email"
           onChange={e => setEmail(e.target.value)}
-        />
-        <Dropdown>
-          <Dropdown.Button flat color="secondary" css={{ tt: "capitalize" }}>
-            {getRole}
-          </Dropdown.Button>
-          <Dropdown.Menu
-            aria-label="Single selection actions"
-            color="secondary"
-            disallowEmptySelection
-            selectionMode="single"
-            selectedKeys={selected}
-            // @ts-ignore
-            onSelectionChange={setSelected}
-          >
-            <Dropdown.Item key="professor">Professor</Dropdown.Item>
-            <Dropdown.Item key="admin">IT Analyst</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+        />        
         <Button type="submit">Register</Button>
       </div>
     </form>

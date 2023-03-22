@@ -14,7 +14,11 @@ export default function Login() {
     e.preventDefault()   
     // Use our login functional expression from useLogin()
     const user = await login(username, password)  
-    onLoggedIn(user)
+    if (user) {
+      onLoggedIn(user)    
+    } else {
+      console.log('Login attempt failed.') 
+    }    
   }  
 
   return (

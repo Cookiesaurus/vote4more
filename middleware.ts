@@ -9,8 +9,9 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { verify } from './lib/jwt'
-import { ADMIN_ROLE, USER_COOKIE_NAME } from './lib/util'
-import { User } from './pages/api/user'
+import { USER_COOKIE_NAME } from './lib/util'
+import { User } from './pages/api/auth/login'
+import { VOTER_TYPE_ID } from './prisma/types'
 
 export const USER_ID_HEADER_NAME = 'user-id'
 
@@ -44,7 +45,8 @@ export async function middleware(request: NextRequest) {
     })
   }
 
-  if (user.role !== ADMIN_ROLE && request.url.includes('accounts')) {
+  // Redirect voters trying to access the employee endpoints
+  if (user.role === VOTER_TYPE_ID && request.url.includes('employee')) {
     const url = request.nextUrl.clone()
     url.pathname = '/'
     return NextResponse.rewrite(url)
