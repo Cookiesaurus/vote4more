@@ -54,7 +54,7 @@ export async function middleware(request: NextRequest) {
 
   // Parse the api key using our server's secret
   const token = await verify(user.apiKey, process.env.JWT_PRIVATE_KEY) as { id: number, exp: number }
-
+  
   // Ensure token parsed
   if (!token) {
     return NextResponse.next({
@@ -85,11 +85,9 @@ export async function middleware(request: NextRequest) {
  */
 export const config = {
   matcher: [
-    '/api/course',
-    '/api/acquisition',
     '/api/login',
     '/api/user',
-    '/courses',
-    '/accounts'
+    '/employee',
+    '/voter'
   ]
 }

@@ -2,6 +2,8 @@ import { Navbar, Button, Link, Text, Container, Table, Row, Image } from "@nextu
 import { useUser } from "../lib/userUser";
 import { NextRouter, useRouter } from "next/router";
 import LogoutButton from "./logout-btn";
+import { User } from "../pages/api/auth/login";
+import { ADMIN_TYPE_ID, EMPLOYEE_TYPE_ID, VOTER_TYPE_ID } from "../prisma/types";
 
 const INDEX_PATHNAME = '/'
 
@@ -50,26 +52,57 @@ const INDEX_PATHNAME = '/'
 //   )
 // }
 
+function renderLinks(router: NextRouter, user: User | null) {
+
+  if (user?.isLoggedIn) {
+    return (
+      <>
+        <LogoutButton />
+      </>
+    )
+  }
+
+  return (
+    <>
+    </>
+  )
+}
+
+function getRootURL(router: NextRouter, user: User | null) {
+  let url = ''
+
+  if (!user?.isLoggedIn)
+    url = INDEX_PATHNAME
+  else if (user.role === EMPLOYEE_TYPE_ID)
+    url = '/employee/dashboard'
+  else if (user.role === VOTER_TYPE_ID)
+    url = '/voter/dashboard'
+
+  return (
+    <Link
+      href={url}
+      underline
+      color={"text"}
+      css={{
+        fontSize: '$2xl',
+        fontWeight: '$bold',
+        marginRight: '5px',
+        marginLeft: '6px'
+      }}>
+      Vote4More
+    </Link>
+  )
+}
+
 export default function Nav() {
   const user = useUser()
   const router = useRouter()
 
   return (
-    <>      
+    <>
       <Navbar isCompact variant="sticky">
         <Navbar.Brand>
-          <Link
-            href={INDEX_PATHNAME}
-            underline
-            color={"text"}
-            css={{
-              fontSize: '$2xl',
-              fontWeight: '$bold',
-              marginRight: '5px',
-              marginLeft: '6px'
-            }}>
-            Vote4More
-          </Link>
+          {getRootURL(router, user)}
           <Text
             css={{
               fontStyle: 'italic'
@@ -77,8 +110,8 @@ export default function Nav() {
           </Text>
         </Navbar.Brand>
         <Navbar.Content>
-          { user && user.isLoggedIn && 
-            <LogoutButton/>      
+          {user && user.isLoggedIn &&
+            renderLinks(router, user)
           }
         </Navbar.Content>
       </Navbar>

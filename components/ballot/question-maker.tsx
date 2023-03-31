@@ -23,7 +23,8 @@ export default function QuestionMaker({
   const [title, setTitle] = useState(question.title)
 
   const handleSetType = (type: Set<string>) => {
-    question.type = type[0]
+    // @ts-ignore
+    question.type = type.currentKey
     setSelected(type)
   }
 
@@ -37,6 +38,11 @@ export default function QuestionMaker({
       return o !== option
     })
     setOptions(r)
+  }
+
+  const handleSetOptions = (options: Array<Option>) => {
+    question.options = options
+    setOptions(options)
   }
 
   const selectedValue = useMemo(
@@ -116,7 +122,7 @@ export default function QuestionMaker({
               marginLeft: '10px',              
             }}
             onPress={() => {
-              setOptions([
+              handleSetOptions([
                 {
                   key: keygen.url(keygen.small),
                   optionDesc: '',

@@ -15,12 +15,6 @@ export type Question = {
   title: string
   type: string
   options: Array<Option>
-  writeIn: string
-}
-
-// A ballot which contains questions
-export type Ballot = {
-  questions: Array<Question>
 }
 
 // Selections for a voted ballot

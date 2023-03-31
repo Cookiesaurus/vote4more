@@ -40,18 +40,18 @@ model Voted {
 model Ballot {
   id                 Int        @id @default(autoincrement())
   title              String
-  creationDate       DateTime
-  openDate           DateTime
+  creationDate       DateTime   @default(now())
+  openingDate        DateTime
   completionDate     DateTime
   autoCompletionDate DateTime
   ownerId            Int
   contributors       Employee[] // many to many
   status             Int
   location           String
-  content            String // json
+  content            Bytes      // json
   enableWriteIn      Boolean
-  candidates         User[] // many to many
-  groups             Group[] // many to many
+  candidates         User[]     // many to many
+  groups             Group[]    // many to many
   votes              Vote[]
 }
 
