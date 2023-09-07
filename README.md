@@ -58,13 +58,13 @@
 
 Our project requires the installation of:
 
-- Install [Node](https://nodejs.org/en/) (I am using 17.6.0, however the latest LTS should work too according to [here](https://nextjs.org/docs/upgrading))
+- Install [Node](https://nodejs.org/en/) (We used 17.6.0, however the latest LTS should work too according to [here](https://nextjs.org/docs/upgrading))
 
   Your node installation includes the following important tools:
   - npx, used to execute packages that haven't been installed *(commonly used in generating templates)*
   - npm, a package manager that doubles to run scripts you define in your `package.json` file
 
-- Install [MySQL](https://www.mysql.com/downloads/) (I am using version 8.26.0, anything close should work too)
+- Install [MySQL](https://www.mysql.com/downloads/) (We used version 8.26.0, anything close should work too)
   - Configure your server to run on port 3306 *(default)* and use the default `username: root` and `password: password` (This could all be omitted with MySQL being containerized in docker if it was setup)
 
 - Install [git](https://git-scm.com/downloads) if you don't have it already. If you have Github Desktop then you should already have it. You can test this by opening a terminal and running `git --version`.
